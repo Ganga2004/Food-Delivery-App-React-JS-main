@@ -1,13 +1,15 @@
 footer {
-  color: #fff;
-  background-color: var(--dark);
+  color: #f4f4f4;
+  background: linear-gradient(to right, #111111, #1c1c1c);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid #333;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  padding: 20px 8vw;
-  padding-top: 80px;
+  gap: 30px;
+  padding: 60px 8vw 30px;
   margin-top: 100px;
+  font-family: "Segoe UI", sans-serif;
 }
 
 .footer-content {
@@ -19,6 +21,13 @@ footer {
 
 .footer-content p {
   text-align: justify;
+  font-size: 14px;
+  color: #cccccc;
+  line-height: 1.6;
+}
+
+.footer-content-left img {
+  width: 150px;
 }
 
 .footer-content-left,
@@ -32,36 +41,90 @@ footer {
 
 footer li {
   list-style: none;
-  margin-bottom: 10px;
+  font-size: 15px;
+  color: #bbbbbb;
   cursor: pointer;
+  transition: 0.3s ease;
+}
+
+footer li:hover {
+  color: var(--primary);
+  transform: translateX(5px);
 }
 
 footer h2 {
   color: var(--primary);
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.footer-social-icons {
+  display: flex;
+  gap: 15px;
 }
 
 .footer-social-icons img {
-  width: 40px;
-  margin-right: 15px;
+  width: 32px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: brightness(0.9);
+}
+
+.footer-social-icons img:hover {
+  transform: scale(1.2);
+  filter: brightness(1.4) drop-shadow(0 0 6px var(--primary));
 }
 
 footer hr {
   width: 100%;
-  height: 2px;
+  height: 1px;
   margin: 20px 0;
-  background-color: var(--gray);
+  background-color: #333;
   border: none;
 }
 
 .footer-copyright {
   text-align: center;
-  color: var(--primary);
+  font-size: 14px;
+  color: #888;
 }
 
 @media (max-width: 750px) {
   .footer-content {
     display: flex;
-    flex-direction: column;
-    gap: 35px;
+    flex-direction: colaumn;
+    gap: 40px;
+  }
+
+  .footer-content-left img {
+    width: 130px;
   }
 }
+.footer-content-left img {
+  filter: brightness(1.2);
+}footer h2::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background-color: var(--primary);
+  margin-top: 6px;
+  border-radius: 1px;
+}
+
+.footer-content-left p {
+  font-size: 14px;
+  color: #dddddd;
+}
+
+.footer-content-right li,
+.footer-content-center li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-content-center ul,
+.footer-content-right ul {
+  padding-left: 0;
+}
+

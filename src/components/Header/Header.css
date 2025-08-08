@@ -1,81 +1,204 @@
+/* Main Header Container */
 header {
   height: 34vw;
   margin: 30px auto;
-  background: url("/header_img.png") no-repeat;
+  background-color: #111; /* dark background */
+  background-image: url("/header_img.png");
+  background-repeat: no-repeat;
+  background-position: center center;
   background-size: cover;
-  position: relative;
   border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.header-contents {
+/* Soft translucent overlay with darker blur */
+.header-overlay {
   position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.7)
+  );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Glassmorphism content panel */
+.header-contents {
+  position: relative;
+  z-index: 2;
+  max-width: 60%;
+  padding: 2vw 3vw;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 20px;
+  text-align: center;
+  color: white;
   display: flex;
   flex-direction: column;
-  align-items: start;
   gap: 1.5vw;
-  max-width: 50%;
-  bottom: 10%;
-  left: 6vw;
-  animation: fadeIn 3s;
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
+/* Highlight badge */
+.header-badge {
+  align-self: center;
+  font-size: 0.9vw;
+  padding: 0.6vw 1.4vw;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid #ffffff30;
+  color: #fff;
+  border-radius: 30px;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* Main heading */
 .header-contents h2 {
-  font-weight: 500;
+  font-weight: 700;
+  font-size: max(3vw, 22px);
   color: #fff;
-  font-size: max(3.9vw, 22px);
-  text-shadow: 4px 4px 4px #00000030;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Description */
 .header-contents p {
-  text-align: justify;
-  color: #fff;
   font-size: 1vw;
-  text-shadow: 2px 2px 2px #00000030;
+  line-height: 1.6;
+  color: #ddd;
+  text-shadow: 1px 1px 2px #00000060;
 }
 
-.header-contents button {
-  border: none;
-  border-radius: 50px;
-  color: var(--gray);
-  font-weight: 500;
+/* CTA Buttons */
+.header-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1vw;
+}
+
+.primary-btn, .secondary-btn {
+  padding: 1vw 2.5vw;
   font-size: max(1vw, 13px);
-  padding: 1vw 2.3vw;
-  background-color: #fff;
+  border-radius: 50px;
+  border: none;
   cursor: pointer;
+  transition: 0.3s ease;
 }
 
+.primary-btn {
+  background-color: #ff4f3c;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(255, 79, 60, 0.4);
+}
+
+.primary-btn:hover {
+  background-color: #ff2e1c;
+}
+
+.secondary-btn {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-weight: 500;
+}
+
+.secondary-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Trust/Rating text */
+.rating-info {
+  font-size: 0.9vw;
+  color: #ccc;
+  text-shadow: 1px 1px 2px #00000070;
+}
+
+/* Animation: Fade slide in */
+.fade-slide {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 1s forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.3s;
+}
+.delay-2 {
+  animation-delay: 0.6s;
+}
+.delay-3 {
+  animation-delay: 0.9s;
+}
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
 @media (max-width: 1050px) {
   header {
     height: 40vw;
   }
 
   .header-contents {
-    max-width: 45%;
+    max-width: 70%;
+    padding: 4vw;
   }
-}
-@media (max-width: 750px) {
-  header {
-    border-radius: 16px;
-  }
-  .header-contents {
-    max-width: 65%;
-  }
+
   .header-contents p {
-    display: none;
+    font-size: 1.4vw;
   }
-  .header-contents button {
-    padding: 2vw 4vw;
+
+  .rating-info {
+    font-size: 1.3vw;
   }
 }
 
-@media (max-width: 600px) {
-  .header-contents {
-    max-width: 85%;
+@media (max-width: 750px) {
+  header {
+    height: 50vw;
+    border-radius: 16px;
   }
+
+  .header-contents {
+    max-width: 90%;
+    padding: 5vw;
+    gap: 4vw;
+  }
+
+  .header-badge {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .header-contents h2 {
+    font-size: 22px;
+  }
+
   .header-contents p {
     display: none;
   }
-  .header-contents button {
-    padding: 2vw 3.5vw;
+
+  .primary-btn, .secondary-btn {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+
+  .rating-info {
+    font-size: 13px;
   }
 }
